@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerManager - Single Lift</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🏋️ PowerManager <span style="font-size: 0.8em; opacity: 0.7">Single Lift Edition</span></div>
+    </header>
+
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('registration', event)">📋 Secretaria / Cadastro</button>
+            
+            <div class="separator"></div>
+            
+            <button class="tab-btn" onclick="openTab('fem-bench', event)">Feminino - Supino</button>
+            <button class="tab-btn" onclick="openTab('fem-dead', event)">Feminino - Terra</button>
+            
+            <div class="separator"></div>
+            
+            <button class="tab-btn" onclick="openTab('masc-bench', event)">Masculino - Supino</button>
+            <button class="tab-btn" onclick="openTab('masc-dead', event)">Masculino - Terra</button>
+            
+            <div class="separator"></div>
+            
+            <button class="tab-btn results-btn" onclick="openTab('results', event)">🏆 Rankings Finais</button>
+        </div>
+    </div>
+
+    <main>
+        <div id="registration" class="tab-content active">
+            <div class="registration-panel">
+                <h2>Novo Atleta</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" id="reg-name" placeholder="Ex: João Silva">
+                    </div>
+                    <div class="form-group">
+                        <label>Gênero</label>
+                        <select id="reg-gender" onchange="updateCategoryOptions()">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Peso Corporal (kg)</label>
+                        <input type="number" step="0.01" id="reg-bodyweight" placeholder="00.00">
+                    </div>
+                    <div class="form-group">
+                        <label>Categoria de Peso</label>
+                        <select id="reg-category"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Idade</label>
+                        <input type="number" id="reg-age" placeholder="Idade">
+                    </div>
+                </div>
+
+                <div class="lift-selection">
+                    <h3>Provas e Pedidas Iniciais</h3>
+                    <div class="lift-option">
+                        <input type="checkbox" id="check-bench" checked onchange="toggleInput('opener-bench', this.checked)">
+                        <label for="check-bench">Participar do Supino</label>
+                        <input type="number" id="opener-bench" placeholder="1ª Pedida (kg)" class="opener-input">
+                    </div>
+                    <div class="lift-option">
+                        <input type="checkbox" id="check-dead" checked onchange="toggleInput('opener-dead', this.checked)">
+                        <label for="check-dead">Participar do Terra</label>
+                        <input type="number" id="opener-dead" placeholder="1ª Pedida (kg)" class="opener-input">
+                    </div>
+                </div>
+
+                <button class="save-btn" onclick="registerAthlete()">Cadastrar Atleta</button>
+            </div>
+
+            <div class="roster-section">
+                <h3>Atletas Inscritos</h3>
+                <div id="roster-list"></div>
+            </div>
+        </div>
+
+        <div id="fem-bench" class="tab-content">
+            <div class="action-bar"><h2>Feminino - Supino</h2></div>
+            <div id="container-fem-bench" class="cards-grid"></div>
+        </div>
+
+        <div id="fem-dead" class="tab-content">
+            <div class="action-bar"><h2>Feminino - Terra</h2></div>
+            <div id="container-fem-dead" class="cards-grid"></div>
+        </div>
+
+        <div id="masc-bench" class="tab-content">
+            <div class="action-bar"><h2>Masculino - Supino</h2></div>
+            <div id="container-masc-bench" class="cards-grid"></div>
+        </div>
+
+        <div id="masc-dead" class="tab-content">
+            <div class="action-bar"><h2>Masculino - Terra</h2></div>
+            <div id="container-masc-dead" class="cards-grid"></div>
+        </div>
+
+        <div id="results" class="tab-content">
+            <div id="results-display" class="results-wrapper"></div>
+        </div>
+    </main>
+
+    <script src="software.js"></script>
+</body>
+</html>
