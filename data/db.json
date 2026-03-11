@@ -1,0 +1,42 @@
+{
+  "atletas": [
+    {
+      "name": "Pedro Gonzales",
+      "gender": "M",
+      "bodyWeight": "104",
+      "weightClass": "105kg",
+      "age": "24",
+      "competesBench": true,
+      "competesDeadlift": true,
+      "bench": [
+        {
+          "val": "150",
+          "status": 1
+        },
+        {
+          "val": "",
+          "status": 0
+        },
+        {
+          "val": "",
+          "status": 0
+        }
+      ],
+      "deadlift": [
+        {
+          "val": "220",
+          "status": 1
+        },
+        {
+          "val": "",
+          "status": 0
+        },
+        {
+          "val": "",
+          "status": 0
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

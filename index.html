@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerManager - Single Lift</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,19 +16,13 @@
     <div class="tabs-container">
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab('registration', event)">📋 Secretaria / Cadastro</button>
-            
             <div class="separator"></div>
-            
             <button class="tab-btn" onclick="openTab('fem-bench', event)">Feminino - Supino</button>
             <button class="tab-btn" onclick="openTab('fem-dead', event)">Feminino - Terra</button>
-            
             <div class="separator"></div>
-            
             <button class="tab-btn" onclick="openTab('masc-bench', event)">Masculino - Supino</button>
             <button class="tab-btn" onclick="openTab('masc-dead', event)">Masculino - Terra</button>
-            
             <div class="separator"></div>
-            
             <button class="tab-btn results-btn" onclick="openTab('results', event)">🏆 Rankings Finais</button>
         </div>
     </div>
@@ -36,7 +30,7 @@
     <main>
         <div id="registration" class="tab-content active">
             <div class="registration-panel">
-                <h2>Novo Atleta</h2>
+                <h2>Gestão de Atleta</h2>
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Nome Completo</label>
@@ -77,7 +71,10 @@
                     </div>
                 </div>
 
-                <button class="save-btn" onclick="registerAthlete()">Cadastrar Atleta</button>
+                <div class="form-actions">
+                    <button id="btn-save-athlete" class="save-btn" onclick="registerAthlete()">Cadastrar Atleta</button>
+                    <button id="btn-cancel-edit" class="btn-cancel" onclick="cancelEdit()">Cancelar Edição</button>
+                </div>
             </div>
 
             <div class="roster-section">
@@ -87,22 +84,58 @@
         </div>
 
         <div id="fem-bench" class="tab-content">
-            <div class="action-bar"><h2>Feminino - Supino</h2></div>
+            <div class="action-bar">
+                <h2>Feminino - Supino</h2>
+                <div class="controls-wrapper">
+                    <input type="text" id="search-F-bench" class="search-input" placeholder="🔍 Buscar atleta pelo nome..." oninput="renderCompetitionBoard('F', 'bench')">
+                    <div class="view-toggle">
+                        <button id="btn-view-cat-F-bench" class="toggle-btn active" onclick="setViewMode('F', 'bench', 'category')">📁 Agrupar por Categoria</button>
+                        <button id="btn-view-lift-F-bench" class="toggle-btn" onclick="setViewMode('F', 'bench', 'lift')">🏋️ Bar Loading (Geral)</button>
+                    </div>
+                </div>
+            </div>
             <div id="container-fem-bench" class="cards-grid"></div>
         </div>
 
         <div id="fem-dead" class="tab-content">
-            <div class="action-bar"><h2>Feminino - Terra</h2></div>
+            <div class="action-bar">
+                <h2>Feminino - Terra</h2>
+                <div class="controls-wrapper">
+                    <input type="text" id="search-F-dead" class="search-input" placeholder="🔍 Buscar atleta pelo nome..." oninput="renderCompetitionBoard('F', 'deadlift')">
+                    <div class="view-toggle">
+                        <button id="btn-view-cat-F-dead" class="toggle-btn active" onclick="setViewMode('F', 'deadlift', 'category')">📁 Agrupar por Categoria</button>
+                        <button id="btn-view-lift-F-dead" class="toggle-btn" onclick="setViewMode('F', 'deadlift', 'lift')">🏋️ Bar Loading (Geral)</button>
+                    </div>
+                </div>
+            </div>
             <div id="container-fem-dead" class="cards-grid"></div>
         </div>
 
         <div id="masc-bench" class="tab-content">
-            <div class="action-bar"><h2>Masculino - Supino</h2></div>
+            <div class="action-bar">
+                <h2>Masculino - Supino</h2>
+                <div class="controls-wrapper">
+                    <input type="text" id="search-M-bench" class="search-input" placeholder="🔍 Buscar atleta pelo nome..." oninput="renderCompetitionBoard('M', 'bench')">
+                    <div class="view-toggle">
+                        <button id="btn-view-cat-M-bench" class="toggle-btn active" onclick="setViewMode('M', 'bench', 'category')">📁 Agrupar por Categoria</button>
+                        <button id="btn-view-lift-M-bench" class="toggle-btn" onclick="setViewMode('M', 'bench', 'lift')">🏋️ Bar Loading (Geral)</button>
+                    </div>
+                </div>
+            </div>
             <div id="container-masc-bench" class="cards-grid"></div>
         </div>
 
         <div id="masc-dead" class="tab-content">
-            <div class="action-bar"><h2>Masculino - Terra</h2></div>
+            <div class="action-bar">
+                <h2>Masculino - Terra</h2>
+                <div class="controls-wrapper">
+                    <input type="text" id="search-M-dead" class="search-input" placeholder="🔍 Buscar atleta pelo nome..." oninput="renderCompetitionBoard('M', 'deadlift')">
+                    <div class="view-toggle">
+                        <button id="btn-view-cat-M-dead" class="toggle-btn active" onclick="setViewMode('M', 'deadlift', 'category')">📁 Agrupar por Categoria</button>
+                        <button id="btn-view-lift-M-dead" class="toggle-btn" onclick="setViewMode('M', 'deadlift', 'lift')">🏋️ Bar Loading (Geral)</button>
+                    </div>
+                </div>
+            </div>
             <div id="container-masc-dead" class="cards-grid"></div>
         </div>
 
@@ -111,6 +144,6 @@
         </div>
     </main>
 
-    <script src="software.js"></script>
+    <script src="software.js?v=2"></script>
 </body>
 </html>
